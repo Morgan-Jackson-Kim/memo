@@ -22,18 +22,34 @@
 			<div class="login-box h-100 d-flex justify-content-center align-items-center">
 				<div class="w-100">
 					<h1 class="text-center">로그인</h1>
-					<input type="text" class="form-control mt-3" placeholder="아이디">
-					<input type="text" class="form-control mt-3" placeholder="패스워드">
-					<button type="submit" class="btn btn-success btn-block mt-3">로그인</button>
+					<input type="text" id="loginIdInput" class="form-control mt-3" placeholder="아이디">
+					<input type="text" id="passwordInput" class="form-control mt-3" placeholder="패스워드">
+					<button id="loginBtn" type="submit" class="btn btn-success btn-block mt-3">로그인</button>
 					<div class="text-right mt-3"><a href="/user/signup_view mt-3">회원가입</a></div>
 				</div>
 			</div>
 		</section>
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
-	
-	
-	
+		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>	
 	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$("#loginBtn").on("click",function(){
+				var loginId = $("#loginIdInput").val();
+				var password = $("#passwordInput").val();
+				
+				if(loginId == null || loginId ==  ""){
+					alert("아이디를 입력해주세요");
+					return;
+				}
+				if(password == null || password ==  ""){
+					alert("비밀번호를를 입력해주세요");
+					return;
+				}
+				
+			});
+		});
+	</script>
 
 </body>
 </html>
