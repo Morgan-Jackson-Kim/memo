@@ -22,9 +22,11 @@
 			<div class="login-box h-100 d-flex justify-content-center align-items-center">
 				<div class="w-100">
 					<h1 class="text-center">로그인</h1>
-					<input type="text" id="loginIdInput" class="form-control mt-3" placeholder="아이디">
-					<input type="text" id="passwordInput" class="form-control mt-3" placeholder="패스워드">
-					<button id="loginBtn" type="submit" class="btn btn-success btn-block mt-3">로그인</button>
+					<form id="loginForm">
+						<input type="text" id="loginIdInput" class="form-control mt-3" placeholder="아이디">
+						<input type="text" id="passwordInput" class="form-control mt-3" placeholder="패스워드">
+						<button id="loginBtn" type="submit" class="btn btn-success btn-block mt-3">로그인</button>
+					</form>
 					<div class="text-right mt-3"><a href="/user/signup_view mt-3">회원가입</a></div>
 				</div>
 			</div>
@@ -34,7 +36,10 @@
 	
 	<script>
 		$(document).ready(function(){
-			$("#loginBtn").on("click",function(){
+			$("#loginForm").on("submit",function(e){
+				
+				e.preventDefualt();
+				
 				var loginId = $("#loginIdInput").val();
 				var password = $("#passwordInput").val();
 				
@@ -47,7 +52,25 @@
 					return;
 				}
 				
+				$.ajax({
+					type:"post",
+					url:"/user/sign_in",
+					data:{"loginId":loginId,"password":password},
+					success:function(data){
+						if(data.result == "success"){
+							alert("로그인 성공");
+						}else{
+							alert("아이디 비밀번호를 확인하세요");
+						}
+					}
+					, error:function(e){
+						alert("로그인 실패");
+					}
+				});
+				
 			});
+			
+			
 		});
 	</script>
 
