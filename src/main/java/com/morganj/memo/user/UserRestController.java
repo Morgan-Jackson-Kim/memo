@@ -1,7 +1,5 @@
 package com.morganj.memo.user;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,6 +57,7 @@ public class UserRestController {
 			HttpSession session = request.getSession();
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userName", user.getName() );
+			session.setAttribute("userId", user.getId());
 			
 			
 		}else {
