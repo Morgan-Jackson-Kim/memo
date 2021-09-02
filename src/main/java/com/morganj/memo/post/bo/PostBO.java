@@ -40,4 +40,12 @@ public class PostBO {
 	public Post getMemo(int id, int userId) {
 		return postDAO.selectMemo(id, userId);
 	}
+	
+	public int updateMemo (int id, String subject, String content) {
+		return postDAO.updatePost(id, subject, content);
+	}
+	
+	public int deleteMemo(int id , int userId) {
+		return postDAO.deletePost(id,userId);
+	}
 }
