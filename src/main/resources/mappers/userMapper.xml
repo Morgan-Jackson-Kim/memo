@@ -12,6 +12,7 @@
  			, `password`
  			, `name`
  			, `email`
+ 			, `phone`
  			, `createdAt`
  			, `updatedAt`
  		)
@@ -20,6 +21,7 @@
  			, #{password}
  			, #{name}
  			, #{email}
+ 			, #{phone}
  			, now()
  			, now()
  		)
@@ -32,6 +34,7 @@
  			, `loginId`
  			, `password`
  			, `name`
+ 			, `phone`
  			, `email`
  			, `createdAt`
  			, `updatedAt`
@@ -40,6 +43,16 @@
  		WHERE
  			`loginId` = #{loginId}
  			AND `password` = #{password}
+ 	</select>
+ 	
+ 	<select id="selectCountById" parameterType="string" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId}	
+ 	
  	</select>
  	
  </mapper>
